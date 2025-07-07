@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 🏕️ Frontend Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📜 Introduction
 
-## Available Scripts
+Imagine you own a rental business like **Roadsurfer**. You have a fleet of campervans and rental stations around the globe. Your customers pick up and return campervans at these stations. Your station personnel stay busy handing over and processing the returned vans.
 
-In the project directory, you can run:
+To make your station staff’s lives easier, improve efficiency, and enhance transparency across all departments, you decide to create a **calendar-like dashboard web-app**. This app will display all planned pickups (booking start date) and returns (booking end date) of campervans at every station based on existing bookings.
 
-### `yarn start`
+For simplicity, let’s agree that a booking should always be returned to the same station where it was picked up.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Framework**: Use a framework of your choice (Vue.js, Angular, React). If you're unsure, we recommend **Vue.js**.
+- **Styling**: Feel free to add some styling (simple or sophisticated—it's up to you! 😉). If you're looking for a recommendation, we suggest **TailwindCSS**.
+- **Hosting**: Host your code on **GitHub** and publish your web app on **GitHub Pages**. More info: [GitHub Pages](https://pages.github.com/).
+- **UX Freedom**: The UX is yours to decide! If the explanation isn't clear enough, feel free to come up with your own interpretation of the task.
+- **Mobile-First Design**: Keep the **mobile-first design** principle in mind when creating your web-app layout.
 
-### `yarn test`
+## 🛠️ To Do
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. **Create a Reusable Autocomplete Component** 🔍
+- Create an **autocomplete** field that performs a search as the user types.
+- The field should query a **remote API** to search based on the text entered.
+- After the user selects a suggestion, the value should be selected, and an event should notify any interested handlers.
 
-### `yarn build`
+### 2. **Page Layout: Calendar View 📅**
+- **Mobile and Desktop Views**: Implement a responsive grid with mobile and desktop views.
+- **Week View**: Design a calendar-like week view with **7 tiles**, one for each weekday.
+- **Pagination**: Implement pagination to switch between weeks.
+- **Station Selector**: Use your **autocomplete component** to select a station (the station where the booking starts or ends). You can fetch the list of stations here:
+    - [Mock API for Stations](https://605c94c36d85de00170da8b4.mockapi.io/stations)
+- **Bookings Display**: On each day-tile, display bookings that start or end on that day at the selected station.
+- **Booking Click**: When a booking is clicked, open a **new view** with the booking details (see below).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. **Booking Detail View 📝**
+- **Booking Information**: Retrieve booking details here:
+    - [Mock API for Booking Details](https://605c94c36d85de00170da8b4.mockapi.io/stations/{station-id}/bookings/{booking-id})
+- Display the following booking details:
+    - **Customer Name**
+    - **Booking Start Date**
+    - **Booking End Date**
+    - **Booking Duration**
+    - **Pickup-Return Station Name**
+    - **Action**: Add a button to return to the calendar view.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 4. **Optional Features 🎯**
+- **Reschedule Booking**: Implement a feature allowing a station employee to reschedule the pickup or return date of a booking by drag-and-dropping it. (You can store the changes locally and emulate an API call—output the imaginary API call as text in the console).
+- **State Management**: Optionally, introduce **state management** to your application. Choose the level of complexity and which parts of the app will use it.
+- **Unit Tests**: Please write **unit tests** for your code! 

@@ -12,10 +12,10 @@ interface Props {
 export const AutocompleteInput = ({stations, onSuggestionClick, stationSuggestions, setStationSuggestions}: Props) => {
     const [activeStationId, setActiveStationId] = useState<string | null>(null);
 
-    const handleAutoCompleteChange = (event) => {
+    const handleAutoCompleteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = event.target.value.toLowerCase();
         const filteredStations = stations.filter(station => station.name.toLowerCase().includes(inputValue));
-        setStationSuggestions(filteredStations);
+        if (setStationSuggestions) setStationSuggestions(filteredStations);
     }
 
     return (
@@ -28,7 +28,7 @@ export const AutocompleteInput = ({stations, onSuggestionClick, stationSuggestio
                 list="stations"
                 onChange={handleAutoCompleteChange}
             />
-            {stationSuggestions.length > 0 && (
+            {stationSuggestions && stationSuggestions.length > 0 && (
                 <div className={styles.suggestionsContainer}>
                     {stationSuggestions.map(suggestion => (
                         <button

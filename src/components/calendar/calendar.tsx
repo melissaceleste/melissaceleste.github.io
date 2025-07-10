@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from "react";
 import {eachDayOfInterval, startOfISOWeek} from "date-fns";
-import {DayTile} from "./day-tile/day-tile.tsx";
 import {BookingEntry} from "../../types/booking-entry.types";
 import styles from "./calendar.module.css";
+import {DayTile} from "./day-tile/day-tile";
+
+interface EnhancedBookingType  {
+    id: string;
+    pickupReturnStationId: string;
+    customerName: string;
+    startDate: Date;
+    endDate: Date;
+    intervall: Date[];
+}
 
 interface Props {
     choosenStation: BookingEntry[];
 }
 
 export const Calendar = ({choosenStation}: Props) => {
-    const [enhancedBookingsForChosenStation, setEnhancedBookingsForChosenStation] = useState([]);
+    const [enhancedBookingsForChosenStation, setEnhancedBookingsForChosenStation] = useState <EnhancedBookingType[]>([]);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [requestedBookingInformation, setRequestedBookingInformation] = useState<BookingEntry | null>(null);
+    const [requestedBookingInformation, setRequestedBookingInformation] = useState<BookingEntry | undefined>(undefined);
 
     useEffect(() => {
         if (!choosenStation || !choosenStation) {
@@ -54,7 +63,7 @@ export const Calendar = ({choosenStation}: Props) => {
     }
 
     const getCustomerNamesOfBookingPerDay = (day: Date) => {
-        const customerNamesOfBookingPerDay = []
+        const customerNamesOfBookingPerDay: string[] = []
         enhancedBookingsForChosenStation.forEach((bookingEntry) => {
             if (bookingEntry.intervall.some((date) => date.toDateString() === day.toDateString())) {
                 customerNamesOfBookingPerDay.push(bookingEntry.customerName);
@@ -65,7 +74,7 @@ export const Calendar = ({choosenStation}: Props) => {
     }
 
     const handleDayTileClick = (customerName: string) => {
-        const requestedBooking = enhancedBookingsForChosenStation.find((booking) => booking.customerName === customerName);
+        const requestedBooking = choosenStation.find((booking) => booking.customerName === customerName);
         setRequestedBookingInformation(requestedBooking)
         setIsModalOpen(true);
     }

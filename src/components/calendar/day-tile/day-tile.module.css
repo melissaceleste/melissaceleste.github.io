@@ -1,0 +1,45 @@
+.container {
+    width: 150px;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+    .isSelected {
+        background-color: pink;
+    }
+
+    .dayHeadline {
+        padding: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        height: 45px;
+    }
+
+    .noBookings {
+        padding: 4px;
+        font-style: italic;
+        font-size: 8px;
+        color: gray;
+    }
+
+    .customerNames {
+        padding: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+
+        .customerName {
+            padding: 2px;
+            font-size: 10px;
+            color: black;
+            border-radius: 10px;
+
+            &:hover {
+                color: black;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}

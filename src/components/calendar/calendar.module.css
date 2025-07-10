@@ -72,5 +72,10 @@
         .dayTileContainer {
             flex-direction: column;
         }
+
+        .modal {
+            left: 0;
+            width: 275px;
+        }
     }
 }
